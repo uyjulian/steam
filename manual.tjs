@@ -124,6 +124,31 @@ class Steam {
     */
    function hookBroadcasting(callback);
 
+
+	// ---------------------------------------------------------
+	// DLC
+	// ---------------------------------------------------------
+
+	// only use this member if you need to check ownership of another game related to yours, a demo for example
+	function isIsSubscribedApp(appID);
+
+	// Takes AppID of DLC and checks if the user owns the DLC & if the DLC is installed
+	function ssDlcInstalled(appID);
+
+	/**
+	 * @return DLCの個数を返す
+	 */
+	function getDLCCount();
+
+	/**
+	 * @param no DLCの番号 
+	 * @rerurn DLC情報
+	      appID
+		  aAvailable
+		  chName
+	 * 
+	 */
+	function getDLCData(no);
 }
 
 

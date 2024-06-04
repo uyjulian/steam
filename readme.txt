@@ -12,16 +12,15 @@ Steam 対応用のプラグインです
 readme.txt			このファイル
 manual.tjs			プラグイン追加メソッド類の説明
 
-premake4.lua			プロジェクト生成用定義ファイル
+premake5.lua			プロジェクト生成用定義ファイル
 
 
-コンパイルにはpremake4が必要です。( http://industriousone.com/premake )
-premake4.exeにパスを通したコマンドライン等から
+コンパイルにはpremake5が必要です。( http://industriousone.com/premake )
+premake5.exeにパスを通したコマンドライン等から
 
-VS2012の場合：
-premake4 vs2012
+premake4 vs2015
 
-とすると，vs2012 フォルダにプロジェクトファイルが生成されるので
+とすると，vs2015 フォルダにプロジェクトファイルが生成されるので
 それをコンパイルしてください。
 
 ●使い方

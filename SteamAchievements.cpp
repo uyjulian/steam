@@ -1,5 +1,6 @@
 #include "SteamAchievements.h"
 #include "ncbind.hpp"
+#include <tchar.h>
 
 extern std::string convertTtstrToUtf8String(ttstr &buf);
 extern ttstr convertUtf8StringToTtstr(const std::string &buf);
@@ -111,12 +112,12 @@ SteamAchievements::OnUserStatsReceived(UserStatsReceived_t *pCallback)
  // we may get callbacks for other games' stats arriving, ignore them
 	if (m_iAppID == pCallback->m_nGameID) {
 		if (k_EResultOK == pCallback->m_eResult) {
-			OutputDebugString("Received stats and achievements from Steam\n");
+			OutputDebugString(_T("Received stats and achievements from Steam\n"));
 			m_bInitialized = true;
 		}
 	} else {
-		char buffer[128];
-		_snprintf(buffer, 128, "RequestStats - failed, %d\n", pCallback->m_eResult);
+		TCHAR buffer[128];
+		_sntprintf(buffer, 128, _T("RequestStats - failed, %d\n"), pCallback->m_eResult);
 		OutputDebugString(buffer);
 	}
 }
@@ -127,11 +128,11 @@ SteamAchievements::OnUserStatsStored(UserStatsStored_t *pCallback)
 	// we may get callbacks for other games' stats arriving, ignore them
 	if (m_iAppID == pCallback->m_nGameID) {
 		if (k_EResultOK == pCallback->m_eResult) {
-			OutputDebugString("Stored stats for Steam\n");
+			OutputDebugString(_T("Stored stats for Steam\n"));
 		}
 	} else {
-		char buffer[128];
-		_snprintf(buffer, 128, "StatsStored - failed, %d\n", pCallback->m_eResult);
+		TCHAR buffer[128];
+		_sntprintf(buffer, 128, _T("StatsStored - failed, %d\n"), pCallback->m_eResult);
 		OutputDebugString(buffer);
 	}
 }
@@ -141,7 +142,7 @@ SteamAchievements::OnAchievementStored(UserAchievementStored_t *pCallback)
 {
 	// we may get callbacks for other games' stats arriving, ignore them
 	if (m_iAppID == pCallback->m_nGameID) {
-		OutputDebugString("Stored Achievement for Steam\n");
+		OutputDebugString(_T("Stored Achievement for Steam\n"));
 	}
 }
 

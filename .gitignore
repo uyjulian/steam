@@ -1,3 +1,7 @@
+.vscode
+bin
+vs2012
+vs2015
 *.pdb
 *.obj
 *.lib

@@ -2,10 +2,24 @@
 #include "tp_stub.h"
 #include "ncbind.hpp"
 #include <string>
-#include <SteamAchievements.h>
+#include "SteamAchievements.h"
 
 #include <steam_api.h>
 #pragma comment(lib,"steam_api.lib")
+
+//ライブラリ互換がロストしてるようなので仮対策・機能的に無効かどうかは不明
+
+#ifndef BroadcastUploadStart_t
+STEAM_CALLBACK_BEGIN(BroadcastUploadStart_t, k_iClientVideoCallbacks + 4)
+STEAM_CALLBACK_END(0)
+#endif
+
+#ifndef BroadcastUploadStop_t
+STEAM_CALLBACK_BEGIN(BroadcastUploadStop_t, k_iClientVideoCallbacks + 5)
+STEAM_CALLBACK_MEMBER(0, EBroadcastUploadResult, m_eResult)
+STEAM_CALLBACK_END(1)
+#endif
+
 
 // ttstrをUTF8文字列へ変換
 std::string
@@ -21,8 +35,11 @@ convertTtstrToUtf8String(ttstr &buf)
 
 // std::stringをttstrに変換
 ttstr
-convertUtf8StringToTtstr(const char *buf, size_t length)
+convertUtf8StringToTtstr(const char *buf, size_t length=-1)
 {
+	if (length < 0) {
+		length = strlen(buf);
+	}
 	tjs_uint maxlen = (tjs_uint)length * 2 + 1;
 	tjs_char *dat = new tjs_char[maxlen];
 	tjs_uint len = TVPUtf8ToWideCharString(buf, dat);
@@ -170,14 +187,14 @@ public:
 		tTJSVariant ret;
 		ISteamRemoteStorage *storage = SteamRemoteStorage();
 		if (storage) {
-			int32 total;
-			int32 available;
+			uint64 total;
+			uint64 available;
 			if (storage->GetQuota(&total, &available)) {
 				iTJSDispatch2 *dict = TJSCreateDictionaryObject();
 				if (dict) {
 					ncbPropAccessor obj(dict);
-					obj.SetValue(L"total", total);
-					obj.SetValue(L"available", available);
+					obj.SetValue(L"total", static_cast<tTVInteger>(total));
+					obj.SetValue(L"available", static_cast<tTVInteger>(available));
 					ret = tTJSVariant(dict, dict);
 					dict->Release();
 				}
@@ -302,6 +319,74 @@ public:
 			return instance->_hookBroadcasting(callback);
 		}
 		return false;
+	}
+
+	// ---------------------------------------------------------
+	// DLC情報
+	// ---------------------------------------------------------
+
+
+	// only use this member if you need to check ownership of another game related to yours, a demo for example
+	static bool isIsSubscribedApp(uint32 appID) {
+		bool ret = false;
+		ISteamApps *app = SteamApps();
+		if (app) {
+			ret = app->BIsSubscribedApp( (AppId_t)appID );
+		}
+		return ret;
+	}
+
+	// Takes AppID of DLC and checks if the user owns the DLC & if the DLC is installed
+	static bool isDlcInstalled(uint32 appID) {
+		bool ret = false;
+		ISteamApps *app = SteamApps();
+		if (app) {
+			ret = app->BIsDlcInstalled( (AppId_t)appID );
+		}
+		return ret;
+	}
+
+	/**
+	 * @return DLCの個数を返す
+	 */
+	static int getDLCCount() {
+		int ret = 0;
+		ISteamApps *app = SteamApps();
+		if (app) {
+			ret = app->GetDLCCount();
+		}
+		return ret;
+	}
+
+	/**
+	 * @param no DLCの番号 
+	 * @rerurn DLC情報
+	      appID
+		  aAvailable
+		  chName
+	 * 
+	 */
+	static tTJSVariant getDLCData(int no) {
+		tTJSVariant ret;
+		ISteamApps *app = SteamApps();
+		if (app) {
+			AppId_t appId;
+			bool available;
+			char chName[4096];
+			if (app->BGetDLCDataByIndex(no, &appId, &available, chName, sizeof chName-1)) {
+				ttstr name = convertUtf8StringToTtstr(chName);
+				iTJSDispatch2 *dict = TJSCreateDictionaryObject();
+				if (dict) {
+					ncbPropAccessor obj(dict);
+					obj.SetValue(L"appId", appId);
+					obj.SetValue(L"available", available);
+					obj.SetValue(L"chName", name);
+					ret = tTJSVariant(dict, dict);
+					dict->Release();
+				}
+			}
+		}
+		return ret;
 	}
 
 public:
@@ -592,6 +677,11 @@ NCB_REGISTER_CLASS(Steam) {
 
 	NCB_METHOD(isBroadcasting);
 	NCB_METHOD(hookBroadcasting);
+
+	NCB_METHOD(isIsSubscribedApp);
+	NCB_METHOD(isDlcInstalled);
+	NCB_METHOD(getDLCCount);
+	NCB_METHOD(getDLCData);
 }
 
 NCB_REGISTER_CALLBACK(PreRegist,  Steam::registerSteam, 0, registerSteam_0);
