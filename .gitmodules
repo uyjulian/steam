@@ -1,0 +1,8 @@
+[submodule "external/ncbind"]
+	path = external/ncbind
+	url = https://github.com/uyjulian/ncbind.git
+	branch = mingw
+[submodule "external/open-steamworks"]
+	path = external/open-steamworks
+	url = https://github.com/uyjulian/open-steamworks.git
+	branch = uyjworking
