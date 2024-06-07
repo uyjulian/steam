@@ -30,8 +30,6 @@ extern void SteamAPI_RunCallbacks();
 extern void SteamAPI_Shutdown();
 extern void SteamAPI_RegisterCallback(class CCallbackBase *pCallback, int iCallback);
 extern void SteamAPI_UnregisterCallback(class CCallbackBase *pCallback);
-extern void* SteamInternal_FindOrCreateUserInterface(int32_t hSteamUser, const char* pszVersion);
-extern int32_t SteamAPI_GetHSteamUser();
 
 typedef ISteamApps004 ISteamApps;
 typedef ISteamRemoteStorage014 ISteamRemoteStorage;

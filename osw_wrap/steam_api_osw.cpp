@@ -1,5 +1,6 @@
 
 #include <steam_api.h>
+#include <stdint.h>
 
 typedef bool (STEAM_CALL *SteamAPI_Init_Fn)();
 typedef void (STEAM_CALL *SteamAPI_RunCallbacks_Fn)();
