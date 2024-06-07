@@ -124,7 +124,7 @@ void SteamAPI_Shutdown()
 	}
 }
 
-void SteamAPI_RegisterCallback( class CCallbackBase *pCallback, int iCallback )
+void SteamAPI_RegisterCallback(class CCallbackBase *pCallback, int iCallback)
 {
 	if (steamapi_ptrs.RegisterCallback)
 	{
@@ -132,7 +132,7 @@ void SteamAPI_RegisterCallback( class CCallbackBase *pCallback, int iCallback )
 	}
 }
 
-void SteamAPI_UnregisterCallback( class CCallbackBase *pCallback )
+void SteamAPI_UnregisterCallback(class CCallbackBase *pCallback)
 {
 	if (steamapi_ptrs.UnregisterCallback)
 	{
