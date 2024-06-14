@@ -3,6 +3,8 @@ SOURCES += Main.cpp Storages.cpp SteamAchievements.cpp osw_wrap/steam_api_osw.cp
 
 INCFLAGS += -Iexternal/open-steamworks/OpenSteamworks -Iosw_wrap
 
+LDLIBS += -luuid -lole32
+
 PROJECT_BASENAME = krkrsteam
 
 RC_FILEDESCRIPTION = Steamworks interface for TVP(KIRIKIRI) (2/Z)
