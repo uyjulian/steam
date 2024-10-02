@@ -1,126 +1,126 @@
 
-// Steam ã‚¯ãƒ©ã‚¹(static)
+// Steam ƒNƒ‰ƒX(static)
 class Steam {
 
 	// ---------------------------------------------------------
-	// å®Ÿç¸¾
+	// ÀÑ
 	// ---------------------------------------------------------
 
 	/**
-	 * å®Ÿç¸¾æƒ…å ±å†å–å¾—è¦æ±‚ â€»èµ·å‹•æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã®ã§æ™®é€šã¯å‘¼ã¶å¿…è¦ãªã—
-	 * @return å‘¼ã³å‡ºã—æˆåŠŸ
+	 * ÀÑî•ñÄæ“¾—v‹ ¦‹N“®‚ÉŒÄ‚Ño‚³‚ê‚é‚Ì‚Å•’Ê‚ÍŒÄ‚Ô•K—v‚È‚µ
+	 * @return ŒÄ‚Ño‚µ¬Œ÷
 	 */
 	function requestInitialize();
 	
-	property initialized; // å®Ÿç¸¾æƒ…å ±åˆæœŸåŒ–æ¸ˆã¿
+	property initialized; // ÀÑî•ñ‰Šú‰»Ï‚İ
 
-	property achievementsCount; // å®Ÿç¸¾å€‹æ•°
+	property achievementsCount; // ÀÑŒÂ”
 
 	/*
-	 * å®Ÿç¸¾ã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹
-	 * @param n ç•ªå·ã¾ãŸã¯è­˜åˆ¥å
-	 * @return å®Ÿç¸¾æƒ…å ±
+	 * ÀÑ‚Ìî•ñ‚ğæ“¾‚·‚é
+	 * @param n ”Ô†‚Ü‚½‚Í¯•Ê–¼
+	 * @return ÀÑî•ñ
 	 *
-	 * ach è­˜åˆ¥å
-	 * name è¡¨ç¤ºå
-	 * desc è§£èª¬
-	 * hidden éš ã—ã‹ã©ã†ã‹
-	 * achieved è§£æ”¾æ¸ˆã¿
-	 * unlockTime è§£æ”¾ã—ãŸæ™‚é–“(unixæ™‚é–“)
+	 * ach ¯•Ê–¼
+	 * name •\¦–¼
+	 * desc ‰ğà
+	 * hidden ‰B‚µ‚©‚Ç‚¤‚©
+	 * achieved ‰ğ•úÏ‚İ
+	 * unlockTime ‰ğ•ú‚µ‚½ŠÔ(unixŠÔ)
 	 */
 	function getAchievement(n);
 
 	/*
-	 * å®Ÿç¸¾ã‚’è§£æ”¾ã™ã‚‹
-	 * @param n ç•ªå·ã¾ãŸã¯è­˜åˆ¥å
+	 * ÀÑ‚ğ‰ğ•ú‚·‚é
+	 * @param n ”Ô†‚Ü‚½‚Í¯•Ê–¼
 	 */
 	function setAchievement(n);
 
 	/**
-	 * å®Ÿç¸¾ã‚’è§£é™¤ã™ã‚‹
-	 * @param n ç•ªå·ã¾ãŸã¯è­˜åˆ¥å
+	 * ÀÑ‚ğ‰ğœ‚·‚é
+	 * @param n ”Ô†‚Ü‚½‚Í¯•Ê–¼
 	 */
 	function clearAchievment(n);
 
 	// ---------------------------------------------------------
-	// ãã®ä»–æƒ…å ±
+	// ‚»‚Ì‘¼î•ñ
 	// ---------------------------------------------------------
 	
 	/**
 	 * static method
-	 * @return ç¾åœ¨ã® Steam ã®è¨€èªã‚’å–å¾—
+	 * @return Œ»İ‚Ì Steam ‚ÌŒ¾Œê‚ğæ“¾
 	 */
 	function getLanguage();
 
 	// ---------------------------------------------------------
-	// ã‚¯ãƒ©ã‚¦ãƒ‰
+	// ƒNƒ‰ƒEƒh
 	// ---------------------------------------------------------
 	
-	// Steamã‚¯ãƒ©ã‚¦ãƒ‰ã®æœ‰åŠ¹/ç„¡åŠ¹è¨­å®š
+	// SteamƒNƒ‰ƒEƒh‚Ì—LŒø/–³Œøİ’è
 	property cloudEnabled;
 
 	/**
-	 * Steamã‚¯ãƒ©ã‚¦ãƒ‰ã®å®¹é‡æƒ…å ±ã®å–å¾—
-	 * @return %[total:ãƒˆãƒ¼ã‚¿ãƒ«ã‚µã‚¤ã‚º, available:ä½¿ç”¨å¯èƒ½å®¹é‡]
+	 * SteamƒNƒ‰ƒEƒh‚Ì—e—Êî•ñ‚Ìæ“¾
+	 * @return %[total:ƒg[ƒ^ƒ‹ƒTƒCƒY, available:g—p‰Â”\—e—Ê]
 	 */
 	function getCloudQuota();
 	
-	// Steamã‚¯ãƒ©ã‚¦ãƒ‰ã®ãƒ•ã‚¡ã‚¤ãƒ«æ•°
+	// SteamƒNƒ‰ƒEƒh‚Ìƒtƒ@ƒCƒ‹”
 	property coundFileCount;
 	
 	/**
-	 * å€‹åˆ¥ã®Steamã‚¯ãƒ©ã‚¦ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰ã¨ã‚µã‚¤ã‚ºã®æƒ…å ±ã‚’å–å¾—
-	 * @param n ãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·
-	 * @return %[filename:åå‰, size:ã‚µã‚¤ã‚º, time:ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—]
+	 * ŒÂ•Ê‚ÌSteamƒNƒ‰ƒEƒhƒtƒ@ƒCƒ‹‚Ì–¼‘O‚ÆƒTƒCƒY‚Ìî•ñ‚ğæ“¾
+	 * @param n ƒtƒ@ƒCƒ‹”Ô†
+	 * @return %[filename:–¼‘O, size:ƒTƒCƒY, time:ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv]
 	 */
 	function getCloudFileInfo(n);
 
 	/**
-	 * Steamã‚¯ãƒ©ã‚¦ãƒ‰ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹
-	 * @return æˆåŠŸã—ãŸã‚‰ true
+	 * SteamƒNƒ‰ƒEƒh‚Ìƒtƒ@ƒCƒ‹‚ğíœ‚·‚é
+	 * @return ¬Œ÷‚µ‚½‚ç true
 	 */
 	function deleteCloudFile(name);
 
 	/**
-	 * Steamã‚¯ãƒ©ã‚¦ãƒ‰ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡è£½ã™ã‚‹
-	 * @return æˆåŠŸã—ãŸã‚‰ true
+	 * SteamƒNƒ‰ƒEƒh‚Ìƒtƒ@ƒCƒ‹‚ğ•¡»‚·‚é
+	 * @return ¬Œ÷‚µ‚½‚ç true
 	 */
 	function copyCloudFile(src, dest);
 
 	// ---------------------------------------------------------
-	// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆ
+	// ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg
 	// ---------------------------------------------------------
 
     /**
-	 * ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆå‡¦ç†ã‚’ã‚¢ãƒ—ãƒªå´ã‹ã‚‰èµ·å‹•ã•ã›ã‚‹
+	 * ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒgˆ—‚ğƒAƒvƒŠ‘¤‚©‚ç‹N“®‚³‚¹‚é
 	 */
     function triggerScreenshot();
 
     /**
-	 * @param callback ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ï¼ˆvoidã®å ´åˆã¯ç™»éŒ²è§£é™¤ï¼‰
-	 * â€»ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°å†…ã‹ã‚‰writeScreenshotã‚’å‘¼ã³ã¾ã™
+	 * @param callback ƒR[ƒ‹ƒoƒbƒNŠÖ”ivoid‚Ìê‡‚Í“o˜^‰ğœj
+	 * ¦ƒR[ƒ‹ƒoƒbƒNŠÖ”“à‚©‚çwriteScreenshot‚ğŒÄ‚Ñ‚Ü‚·
 	 */
 	function hookScreenshots(callback);
 
 	/**
-	 * ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆã®ç™»éŒ²
-	 * @param layer ç”»åƒ
-	 * @param location "å ´æ‰€æ–‡å­—åˆ—" (ç©ºæ–‡å­—ã®å ´åˆã¯ç™»éŒ²ã—ãªã„ï¼‰
+	 * ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg‚Ì“o˜^
+	 * @param layer ‰æ‘œ
+	 * @param location "êŠ•¶š—ñ" (‹ó•¶š‚Ìê‡‚Í“o˜^‚µ‚È‚¢j
 	 */
 	function writeScreenshot(layer, location);
 
 	// ---------------------------------------------------------
-	// é…ä¿¡çŠ¶æ…‹
+	// ”zMó‘Ô
 	// ---------------------------------------------------------
 
     /**
-	 * @return é…ä¿¡ä¸­ãªã‚‰çœŸ
+	 * @return ”zM’†‚È‚ç^
 	 */
    function isBroadcasting();
 
    /**
-    * é…ä¿¡çŠ¶æ…‹å¤‰æ›´æ™‚ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
-	* @param callback ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯(function (is_start) {})
+    * ”zMó‘Ô•ÏX‚ÌƒR[ƒ‹ƒoƒbƒN
+	* @param callback ƒR[ƒ‹ƒoƒbƒN(function (is_start) {})
     */
    function hookBroadcasting(callback);
 
@@ -136,13 +136,13 @@ class Steam {
 	function ssDlcInstalled(appID);
 
 	/**
-	 * @return DLCã®å€‹æ•°ã‚’è¿”ã™
+	 * @return DLC‚ÌŒÂ”‚ğ•Ô‚·
 	 */
 	function getDLCCount();
 
 	/**
-	 * @param no DLCã®ç•ªå· 
-	 * @rerurn DLCæƒ…å ±
+	 * @param no DLC‚Ì”Ô† 
+	 * @rerurn DLCî•ñ
 	      appID
 		  aAvailable
 		  chName
@@ -152,6 +152,6 @@ class Steam {
 }
 
 
-//â€»Steamã‚¯ãƒ©ã‚¦ãƒ‰media
-//  "steam://" + filename (ãƒ‰ãƒ¡ã‚¤ãƒ³ã®æ¦‚å¿µã¯ãªã„ï¼‰
+//¦SteamƒNƒ‰ƒEƒhmedia
+//  "steam://" + filename (ƒhƒƒCƒ“‚ÌŠT”O‚Í‚È‚¢j
 
