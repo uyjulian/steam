@@ -9,7 +9,7 @@
 extern std::string convertTtstrToUtf8String(ttstr &buf);
 extern ttstr convertUtf8StringToTtstr(const std::string &buf);
 
-#define BASENAME L"steam"
+#define BASENAME TJS_W("steam")
 
 /**
  * Steam ファイル情報保持用クラス

@@ -99,7 +99,7 @@ public:
 			achieve = new SteamAchievements();
 			TVPAddContinuousEventHook(this);
 		} else {
-			TVPThrowExceptionMessage(L"Steam must be running to play this game (SteamAPI_Init() failed)");
+			TVPThrowExceptionMessage(TJS_W("Steam must be running to play this game (SteamAPI_Init() failed)"));
 		}
 	}
 
@@ -193,8 +193,8 @@ public:
 				iTJSDispatch2 *dict = TJSCreateDictionaryObject();
 				if (dict) {
 					ncbPropAccessor obj(dict);
-					obj.SetValue(L"total", static_cast<tTVInteger>(total));
-					obj.SetValue(L"available", static_cast<tTVInteger>(available));
+					obj.SetValue(TJS_W("total"), static_cast<tTVInteger>(total));
+					obj.SetValue(TJS_W("available"), static_cast<tTVInteger>(available));
 					ret = tTJSVariant(dict, dict);
 					dict->Release();
 				}
@@ -221,9 +221,9 @@ public:
 			iTJSDispatch2 *dict = TJSCreateDictionaryObject();
 			if (dict) {
 				ncbPropAccessor obj(dict);
-				obj.SetValue(L"filename", convertUtf8StringToTtstr(name));
-				obj.SetValue(L"size", size);
-				obj.SetValue(L"time", time);
+				obj.SetValue(TJS_W("filename"), convertUtf8StringToTtstr(name));
+				obj.SetValue(TJS_W("size"), size);
+				obj.SetValue(TJS_W("time"), time);
 				ret = tTJSVariant(dict, dict);
 				dict->Release();
 			}
@@ -378,9 +378,9 @@ public:
 				iTJSDispatch2 *dict = TJSCreateDictionaryObject();
 				if (dict) {
 					ncbPropAccessor obj(dict);
-					obj.SetValue(L"appId", appId);
-					obj.SetValue(L"available", available);
-					obj.SetValue(L"chName", name);
+					obj.SetValue(TJS_W("appId"), appId);
+					obj.SetValue(TJS_W("available"), available);
+					obj.SetValue(TJS_W("chName"), name);
 					ret = tTJSVariant(dict, dict);
 					dict->Release();
 				}

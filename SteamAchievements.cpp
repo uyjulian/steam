@@ -60,11 +60,11 @@ SteamAchievements::getAchievement(tTJSVariant n)
 				iTJSDispatch2 *dict = TJSCreateDictionaryObject();
 				if (dict) {
 					ncbPropAccessor obj(dict);
-					obj.SetValue(L"ach", ach);
-					obj.SetValue(L"achieved", achieved);
-					obj.SetValue(L"unlockTime", unlockTime);
-					obj.SetValue(L"name", convertUtf8StringToTtstr(name));
-					obj.SetValue(L"desc", convertUtf8StringToTtstr(desc));
+					obj.SetValue(TJS_W("ach"), ach);
+					obj.SetValue(TJS_W("achieved"), achieved);
+					obj.SetValue(TJS_W("unlockTime"), unlockTime);
+					obj.SetValue(TJS_W("name"), convertUtf8StringToTtstr(name));
+					obj.SetValue(TJS_W("desc"), convertUtf8StringToTtstr(desc));
 					ret = tTJSVariant(dict, dict);
 					dict->Release();
 				}
